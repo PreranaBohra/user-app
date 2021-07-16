@@ -10,6 +10,8 @@
 img{
     height:200px;
     width:200px;
+    margin-left: 15px;
+    margin-top: 10px;
 } 
 
 .container{
@@ -21,12 +23,14 @@ img{
 .title{
     font-size: x-large;
     text-transform: capitalize;
-    padding: 20px;
+    padding: 5px;
+    justify-content: center;
+    margin-left: 40px;
 }
 
 .attributes{
     font-size: x-small;
-    padding: 5px;
+    padding: 1px;
 }
 
 body{
@@ -39,10 +43,11 @@ input{
    height: 40px;
 }
 button{
-    width:100px;
+    width:150px;
     font-size: 15px;
     border: 1px solid gray;
     border-radius: 10px;
     background-color: rgb(199, 175, 175);
+    color:darkred;
     
 }

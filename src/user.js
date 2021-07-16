@@ -6,6 +6,7 @@ const User = () =>{
  
   const [posts, setPost] = useState([]);
   const [search, setSearch] = useState('');
+  const [sortedData , setsortedData] = useState([]);
   
 
     const getData = async () =>{
@@ -17,24 +18,15 @@ const User = () =>{
     useEffect(() => {
           getData();
      },[])
+   
+   const sortByname = () => {
+    const sorted = posts.sort((a, b) => {
+      return  a.login.toUpperCase().localeCompare( b.login.toUpperCase())
+    })
+    setsortedData(sorted);
+    console.log(sorted);
+  };
 
-  
-  const Sort = () =>{
-    return(
-        posts.sort((a, b) =>{
-        let nameA = a.login.toUpperCase()
-        let nameB = b.login.toUpperCase()
-        if (nameA < nameB) {
-          return -1;
-        }
-        if (nameA > nameB) {
-          return 1;
-        }
-        return 0;
-      //  return ( (a.login.toUpperCase()).localCompare( b.login.toUpperCase()))
-    
-         } ))}
- 
      const filteredUsers = posts.filter(post => {
         return post.login.toLowerCase().includes(search.toLowerCase())
         }  )
@@ -47,8 +39,9 @@ const User = () =>{
             <div class="d-flex mt-2 ">
             <input type="text" placeholder="Github User..." name="search" onChange={(e) => setSearch(e.target.value)}></input> 
             
-            <button onClick={()=>Sort()}>Sort</button></div>
+            <button onClick={sortByname}>Sort by name</button>
 
+            </div>
             <div className="container">
               {filteredUsers.map((post, id)=>(
                   <UserDetails key={id} {...post}/>
